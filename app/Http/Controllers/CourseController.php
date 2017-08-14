@@ -86,6 +86,7 @@ class CourseController extends Controller
 
     public function destroy($id){
         $result = Course::where('id',$id)->first()->delete();
+        UserCourse::where('course_id',$id)->delete();
         if($result) return response()->json(['status' => 'deleted','message' => 'You have successfully delete this course!']);
         else return response()->json(['status' => 'failed','message' => 'You have failed delete this course!']);
     }

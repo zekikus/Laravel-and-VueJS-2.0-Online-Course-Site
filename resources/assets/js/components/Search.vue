@@ -4,11 +4,13 @@
         <hr/>
         <div v-for="course in results">
             <div class="resultBox">
-                <img :src="course.image" class="center-block" width="150px" height="100px"/>
-                <p><a :href="courseLink(course)">{{course.name}}</a></p>
-                <p>{{course.description}}</p>
-                <span style="color: darkred" v-if="isMyCourse(course)"><b>Your Course</b></span>
-                <span  style="color: darkred" v-if="!isMyCourse(course)"><b>{{course.user.name}}</b></span>
+                <img :src="course.image" class="image-side" width="100px" height="100px"/>
+                <div class="text-side">
+                    <p><a :href="courseLink(course)">{{course.name}}</a></p>
+                    <p>{{course.description.substring(0,75)}}...</p>
+                    <span style="color: darkred" v-if="isMyCourse(course)"><b>Your Course</b></span>
+                    <span  style="color: darkred" v-if="!isMyCourse(course)"><a :href="profileLink(course)">{{course.user.name}}</a></span>
+                </div>
             </div>
             <hr/>
         </div>
@@ -37,6 +39,9 @@
             courseLink(course){
                 return '/courses/' + course.slug;
             },
+            profileLink(course){
+                return '/profiles/' + course.user_id;
+            },
             isMyCourse(course){
                 console.log(course);
                 return this.$store.state.auth_user.id == course.user_id;
@@ -50,5 +55,16 @@
         background: rgba(255, 255, 255, 0.15);
         padding: 15px;
         box-shadow: 1px 1px 10px 1px black;
+    }
+
+    .image-side{
+        display:inline-block;
+        float:left;
+    }
+
+    .text-side{
+        display: inline-block;
+        margin-left: 15px;
+        clear: right;
     }
 </style>

@@ -39,7 +39,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         @if(Auth::check())
-                        <li><a href="{{url('/courses/create')}}">Create Course</a></li>    &nbsp;
+                        <li><a href="{{url('/courses/create')}}">Create Course</a></li>
+                            <li><a href="/profiles/{{Auth::id()}}">My Profile</a></li>&nbsp;
                         @endif
                     </ul>
 

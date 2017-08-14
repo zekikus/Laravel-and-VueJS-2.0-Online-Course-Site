@@ -42,7 +42,7 @@
 
                     <div class="panel-body">
                         <p>{{$course->description}}</p>
-                        <span class="pull-right"><b>Educator: {{$course->user->name}}</b></span>
+                        <span class="pull-right"><b>Instructor: <a href="/profiles/{{$course->user->id}}">{{$course->user->name}}</a></b></span>
                     </div>
                 </div>
             </div>

@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
+
     public function courses(){
         return $this->hasMany(Course::class);
     }

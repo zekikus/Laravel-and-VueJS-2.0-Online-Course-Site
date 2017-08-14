@@ -21,4 +21,6 @@ Auth::routes();
 
 Route::get('/courses/{id}/join','CourseController@joinCourse');
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::resource('courses','CourseController');
+Route::resource('profiles','ProfileController');

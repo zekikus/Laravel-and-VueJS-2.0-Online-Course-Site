@@ -12,10 +12,11 @@ import {store} from './store';
 import EditCourse from './components/EditCourse.vue';
 import ShowCourse from './components/ShowCourse.vue';
 import Search from './components/Search.vue';
+import Profile from './components/Profile.vue';
 import Init from './components/Init.vue';
 
 const app = new Vue({
     el: '#app',
-    components: {EditCourse, ShowCourse,Search, Init},
+    components: {EditCourse, ShowCourse, Search, Profile, Init},
     store
 });

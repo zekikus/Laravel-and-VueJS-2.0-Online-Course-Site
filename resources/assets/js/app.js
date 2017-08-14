@@ -11,10 +11,11 @@ import Vue from 'vue';
 import {store} from './store';
 import EditCourse from './components/EditCourse.vue';
 import ShowCourse from './components/ShowCourse.vue';
+import Search from './components/Search.vue';
 import Init from './components/Init.vue';
 
 const app = new Vue({
     el: '#app',
-    components: {EditCourse, ShowCourse, Init},
+    components: {EditCourse, ShowCourse,Search, Init},
     store
 });

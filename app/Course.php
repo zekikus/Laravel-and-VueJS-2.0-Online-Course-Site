@@ -4,14 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 
 class Course extends Model
 {
+    public $with = ['user'];
+    use Searchable;
     protected $table = 'courses';
     protected $fillable = ['name', 'slug', 'user_id', 'image', 'description'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->select(['name','id']);
     }
 
     public function lessons(){

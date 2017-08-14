@@ -14,11 +14,26 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
+    $name = $faker->name;
 
     return [
-        'name' => $faker->name,
+        'name' => $name,
+        'slug' => str_slug($name),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Course::class, function (Faker\Generator $faker) {
+    static $password;
+    $name = $faker->company;
+
+    return [
+        'name' => $name,
+        'slug' => str_slug($name),
+        'user_id' => 1,
+        'image' => 'public/images/default.png',
+        'description' => $faker->paragraph(2)
     ];
 });

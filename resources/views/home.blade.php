@@ -2,13 +2,12 @@
 
 @section('content')
 <div class="container">
-
+    <search></search>
     @if(count($courses))
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-success">
                 <div class="panel-heading">My Courses</div>
-
 
             </div>
         </div>
@@ -27,10 +26,11 @@
 
     </div>
     @endif
-
+    <hr/>
+    @if(count(Auth::user()->buyingCourses))
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Buy Course</div>
             </div>
         </div>
@@ -42,11 +42,12 @@
 
                     <div class="panel-body">
                         <p>{{$course->description}}</p>
+                        <span class="pull-right"><b>Educator: {{$course->user->name}}</b></span>
                     </div>
                 </div>
             </div>
         @endforeach
-
+     @endif
     </div>
 </div>
 @endsection
